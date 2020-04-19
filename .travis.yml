@@ -15,7 +15,7 @@ android:
     - sys-img-armeabi-v7a-android-21
 before_install:
   - yes | sdkmanager "platforms;android-28"
-script: ./gradlew :app:build :app:connectedDebugAndroidTest
+script: ./gradlew :app:build
 env:
   global:
     - MALLOC_ARENA_MAX=2
