@@ -6,12 +6,12 @@ import javax.inject.Inject;
 
 public class PlayersInteractor {
 
-/*    PlayersAPI playersAPI;
+    PlayersAPI playersAPI;
 
     @Inject
     public PlayersInteractor(PlayersAPI playersAPI) {
         this.playersAPI = playersAPI;
-    }*/
+    }
 
     public void getPlayers() {}
 

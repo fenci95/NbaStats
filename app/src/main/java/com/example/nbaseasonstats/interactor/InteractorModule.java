@@ -10,7 +10,7 @@ import javax.inject.Singleton;
 public class InteractorModule {
     @Provides
     @Singleton
-    public PlayersInteractor providePlayersInteractor(){
-        return new PlayersInteractor();
+    public PlayersInteractor providePlayersInteractor(PlayersAPI api){
+        return new PlayersInteractor(api);
     }
 }
