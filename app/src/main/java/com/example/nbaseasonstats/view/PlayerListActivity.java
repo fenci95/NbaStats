@@ -27,6 +27,7 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerListS
     protected void onStart() {
         super.onStart();
         this.playerListPresenter.attachScreen(this);
+        playerListPresenter.getPlayerStatistics(237);
     }
 
     @Override

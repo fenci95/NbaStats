@@ -1,6 +1,9 @@
 package com.example.nbaseasonstats.presenter;
 
+import com.example.nbaseasonstats.di.Network;
 import com.example.nbaseasonstats.interactor.PlayersInteractor;
+
+import java.util.concurrent.Executor;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,8 +14,8 @@ public class PresenterModule {
 
     @Provides
     @Singleton
-    PlayerListPresenter providePlayerListPresenter(PlayersInteractor playersInteractor) {
-        return new PlayerListPresenter(playersInteractor);
+    PlayerListPresenter providePlayerListPresenter(@Network Executor networkExecutor, PlayersInteractor playersInteractor) {
+        return new PlayerListPresenter(networkExecutor, playersInteractor);
     }
 
     @Provides
