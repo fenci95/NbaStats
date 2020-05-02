@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.example.nbaseasonstats.di.Network;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -30,5 +32,11 @@ public class UIModule {
     @Network
     public Executor provideNetworkExecutor() {
         return Executors.newFixedThreadPool(1);
+    }
+
+    @Provides
+    @Singleton
+    public EventBus provideEventBus() {
+        return EventBus.getDefault();
     }
 }
