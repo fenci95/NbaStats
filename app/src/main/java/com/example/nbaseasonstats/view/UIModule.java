@@ -31,7 +31,7 @@ public class UIModule {
     @Singleton
     @Network
     public Executor provideNetworkExecutor() {
-        return Executors.newFixedThreadPool(1);
+        return Executors.newFixedThreadPool(3);
     }
 
     @Provides

@@ -1,8 +1,10 @@
 package com.example.nbaseasonstats.presenter;
 
 import com.example.nbaseasonstats.di.Network;
+import com.example.nbaseasonstats.interactor.DatabaseInteractor;
 import com.example.nbaseasonstats.interactor.PlayersInteractor;
 import com.example.nbaseasonstats.interactor.events.GetPlayersEvent;
+import com.example.nbaseasonstats.interactor.events.GetPlayersFromDbEvent;
 import com.example.nbaseasonstats.view.PlayerListScreen;
 
 import org.greenrobot.eventbus.EventBus;
@@ -18,11 +20,13 @@ public class PlayerListPresenter extends Presenter<PlayerListScreen> {
     PlayersInteractor playersInteractor;
     Executor networkExecutor;
     EventBus bus;
+    DatabaseInteractor databaseInteractor;
 
     @Inject
-    public PlayerListPresenter(@Network Executor networkExecutor, PlayersInteractor playersInteractor, EventBus bus) {
+    public PlayerListPresenter(@Network Executor networkExecutor, PlayersInteractor playersInteractor, EventBus bus, DatabaseInteractor databaseInteractor) {
         this.playersInteractor = playersInteractor;
         this.networkExecutor = networkExecutor;
+        this.databaseInteractor = databaseInteractor;
         this.bus = bus;
     }
 
@@ -60,4 +64,5 @@ public class PlayerListPresenter extends Presenter<PlayerListScreen> {
             }
         }
     }
+
 }

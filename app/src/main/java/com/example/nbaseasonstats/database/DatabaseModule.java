@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -15,9 +16,10 @@ public class DatabaseModule {
 
     Context context;
 
-    DatabaseModule(Context context){
+    public DatabaseModule(Context context){
         this.context = context;
     }
+
     @Provides
     @Singleton
     public NBAPlayerDatabase provideDatabase() {
