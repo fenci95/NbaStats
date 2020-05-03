@@ -2,8 +2,8 @@ package com.example.nbaseasonstats.interactor;
 
 import com.example.nbaseasonstats.interactor.events.GetPlayerStatsEvent;
 import com.example.nbaseasonstats.interactor.events.GetPlayersEvent;
-import com.example.nbaseasonstats.model.Player;
-import com.example.nbaseasonstats.model.PlayerList;
+import com.example.nbaseasonstats.model.PlayerResponse;
+import com.example.nbaseasonstats.model.PlayerListResponse;
 import com.example.nbaseasonstats.network.PlayersAPI;
 
 import org.greenrobot.eventbus.EventBus;
@@ -28,8 +28,8 @@ public class PlayersInteractor {
     public void getPlayers() {
         GetPlayersEvent event = new GetPlayersEvent();
         try {
-            Call<PlayerList> playersCall = playersAPI.playersGet();
-            Response<PlayerList> response = playersCall.execute();
+            Call<PlayerListResponse> playersCall = playersAPI.playersGet();
+            Response<PlayerListResponse> response = playersCall.execute();
             if (response.code() != 200) {
                 throw new Exception("Result code is not 200");
             }
@@ -45,8 +45,8 @@ public class PlayersInteractor {
     public void getPlayerStats(Integer playerId) {
         GetPlayerStatsEvent event = new GetPlayerStatsEvent();
         try {
-            Call<Player> playerCall = playersAPI.seasonAveragesGet(playerId);
-            Response<Player> response = playerCall.execute();
+            Call<PlayerResponse> playerCall = playersAPI.seasonAveragesGet(playerId);
+            Response<PlayerResponse> response = playerCall.execute();
             if (response.code() != 200) {
                 throw new Exception("Result code is not 200");
             }

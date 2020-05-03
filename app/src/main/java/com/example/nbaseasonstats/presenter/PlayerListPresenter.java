@@ -3,7 +3,6 @@ package com.example.nbaseasonstats.presenter;
 import com.example.nbaseasonstats.di.Network;
 import com.example.nbaseasonstats.interactor.PlayersInteractor;
 import com.example.nbaseasonstats.interactor.events.GetPlayersEvent;
-import com.example.nbaseasonstats.model.PlayerList;
 import com.example.nbaseasonstats.view.PlayerListScreen;
 
 import org.greenrobot.eventbus.EventBus;

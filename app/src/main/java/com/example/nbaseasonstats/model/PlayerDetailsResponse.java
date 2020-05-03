@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PlayerDetails   {
+public class PlayerDetailsResponse {
   
   @SerializedName("games_played")
   private Long gamesPlayed = null;
@@ -170,7 +170,7 @@ public class PlayerDetails   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PlayerDetails playerDetails = (PlayerDetails) o;
+    PlayerDetailsResponse playerDetails = (PlayerDetailsResponse) o;
     return Objects.equals(gamesPlayed, playerDetails.gamesPlayed) &&
         Objects.equals(playerId, playerDetails.playerId) &&
         Objects.equals(min, playerDetails.min) &&

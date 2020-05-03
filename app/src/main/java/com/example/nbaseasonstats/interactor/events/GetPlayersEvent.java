@@ -1,17 +1,17 @@
 package com.example.nbaseasonstats.interactor.events;
 
-import com.example.nbaseasonstats.model.PlayerList;
+import com.example.nbaseasonstats.model.PlayerListResponse;
 
 public class GetPlayersEvent {
     private int code;
-    private PlayerList players;
+    private PlayerListResponse players;
     private Throwable throwable;
 
     public GetPlayersEvent() {
 
     }
 
-    public GetPlayersEvent(int code, PlayerList players, Throwable throwable) {
+    public GetPlayersEvent(int code, PlayerListResponse players, Throwable throwable) {
         this.code = code;
         this.players = players;
         this.throwable = throwable;
@@ -25,11 +25,11 @@ public class GetPlayersEvent {
         this.code = code;
     }
 
-    public PlayerList getPlayers() {
+    public PlayerListResponse getPlayers() {
         return players;
     }
 
-    public void setPlayers(PlayerList players) {
+    public void setPlayers(PlayerListResponse players) {
         this.players = players;
     }
 

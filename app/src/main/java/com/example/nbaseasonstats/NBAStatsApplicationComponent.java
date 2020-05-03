@@ -1,5 +1,6 @@
 package com.example.nbaseasonstats;
 
+import com.example.nbaseasonstats.database.DatabaseModule;
 import com.example.nbaseasonstats.view.PlayerDetailsActivity;
 import com.example.nbaseasonstats.view.PlayerListActivity;
 import com.example.nbaseasonstats.view.UIModule;
@@ -12,7 +13,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {UIModule.class, InteractorModule.class, PresenterModule.class, NetworkModule.class })
+@Component(modules = {UIModule.class, InteractorModule.class, PresenterModule.class, NetworkModule.class, DatabaseModule.class })
 public interface NBAStatsApplicationComponent {
     void inject(PlayerListActivity playerListActivityActivity);
     void inject(PlayerDetailsActivity playerDetailsActivity);
