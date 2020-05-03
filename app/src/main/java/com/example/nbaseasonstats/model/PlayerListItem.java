@@ -1,32 +1,86 @@
 package com.example.nbaseasonstats.model;
 
-public class PlayerListItem {
+import java.util.Objects;
 
-    private int Id;
-    private String Name;
-    private boolean isFavourite;
+import com.google.gson.annotations.SerializedName;
 
-    public int getId() {
-        return Id;
+
+public class PlayerListItem   {
+  
+  @SerializedName("id")
+  private Long id = null;
+  
+  @SerializedName("first_name")
+  private String firstName = null;
+  
+  @SerializedName("last_name")
+  private String lastName = null;
+  
+
+  public Long getId() {
+    return id;
+  }
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+
+  public String getFirstName() {
+    return firstName;
+  }
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+
+  public String getLastName() {
+    return lastName;
+  }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    public void setId(int id) {
-        Id = id;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    PlayerListItem playerListItem = (PlayerListItem) o;
+    return Objects.equals(id, playerListItem.id) &&
+        Objects.equals(firstName, playerListItem.firstName) &&
+        Objects.equals(lastName, playerListItem.lastName);
+  }
 
-    public String getName() {
-        return Name;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, firstName, lastName);
+  }
 
-    public void setName(String name) {
-        Name = name;
-    }
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PlayerListItem {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
+    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
 
-    public boolean isFavourite() {
-        return isFavourite;
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-
-    public void setFavourite(boolean favourite) {
-        isFavourite = favourite;
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

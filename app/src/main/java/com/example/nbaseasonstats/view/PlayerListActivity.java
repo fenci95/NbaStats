@@ -3,9 +3,11 @@ package com.example.nbaseasonstats.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.nbaseasonstats.NBAStatsApplication;
 import com.example.nbaseasonstats.R;
+import com.example.nbaseasonstats.model.PlayerList;
 import com.example.nbaseasonstats.presenter.PlayerListPresenter;
 
 import javax.inject.Inject;
@@ -27,6 +29,7 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerListS
     protected void onStart() {
         super.onStart();
         this.playerListPresenter.attachScreen(this);
+        this.playerListPresenter.getPlayers();
     }
 
     @Override
@@ -36,7 +39,12 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerListS
     }
 
     @Override
-    public void showPlayers() {
+    public void showPlayers(PlayerList players) {
 
+    }
+
+    @Override
+    public void showError(Throwable throwable) {
+        Log.d("Error", throwable.getMessage());
     }
 }

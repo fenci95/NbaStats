@@ -1,6 +1,11 @@
 package com.example.nbaseasonstats.presenter;
 
+import com.example.nbaseasonstats.di.Network;
 import com.example.nbaseasonstats.interactor.PlayersInteractor;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.concurrent.Executor;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,13 +16,13 @@ public class PresenterModule {
 
     @Provides
     @Singleton
-    PlayerListPresenter providePlayerListPresenter(PlayersInteractor playersInteractor) {
-        return new PlayerListPresenter(playersInteractor);
+    PlayerListPresenter providePlayerListPresenter(@Network Executor networkExecutor, PlayersInteractor playersInteractor, EventBus bus) {
+        return new PlayerListPresenter(networkExecutor, playersInteractor, bus);
     }
 
     @Provides
     @Singleton
-    PlayerDetailsPresenter providePlayerDetailsPresenter(PlayersInteractor playersInteractor) {
-        return new PlayerDetailsPresenter(playersInteractor);
+    PlayerDetailsPresenter providePlayerDetailsPresenter(@Network Executor networkExecutor, PlayersInteractor playersInteractor, EventBus bus) {
+        return new PlayerDetailsPresenter(networkExecutor, playersInteractor, bus);
     }
 }
