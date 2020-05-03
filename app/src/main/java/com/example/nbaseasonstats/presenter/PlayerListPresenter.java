@@ -117,7 +117,7 @@ public class PlayerListPresenter extends Presenter<PlayerListScreen> {
                 screen.showError(event.getThrowable());
             }
         } else {
-            getPlayers();
+            getPlayersFromDb();
         }
     }
 
