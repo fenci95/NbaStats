@@ -2,11 +2,12 @@ package com.example.nbaseasonstats.interactor.events;
 
 import com.example.nbaseasonstats.model.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GetPlayersFromDbEvent {
 
-    private List<Player> players;
+    private List<Player> players = new ArrayList<Player>();
     private Throwable throwable;
 
     public GetPlayersFromDbEvent() {}

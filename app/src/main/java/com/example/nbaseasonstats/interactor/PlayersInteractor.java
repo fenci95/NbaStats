@@ -34,7 +34,7 @@ public class PlayersInteractor {
                 throw new Exception("Result code is not 200");
             }
             event.setCode(response.code());
-            event.setPlayers(response.body());
+            event.setPlayers(response.body().getData());
             bus.post(event);
         } catch (Exception e) {
             event.setThrowable(e);
