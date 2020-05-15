@@ -1,7 +1,7 @@
 package com.example.nbaseasonstats.network;
 
-import com.example.nbaseasonstats.model.Player;
-import com.example.nbaseasonstats.model.PlayerList;
+import com.example.nbaseasonstats.model.PlayerResponse;
+import com.example.nbaseasonstats.model.PlayerListResponse;
 
 import retrofit2.http.*;
 import retrofit2.Call;
@@ -10,10 +10,10 @@ import retrofit2.Call;
 public interface PlayersAPI {
 
     @GET("players")
-    Call<PlayerList> playersGet();
+    Call<PlayerListResponse> playersGet();
 
     @GET("season_averages")
-    Call<Player> seasonAveragesGet(
+    Call<PlayerResponse> seasonAveragesGet(
             @Query("player_ids[]") Integer playerIds
     );
 }

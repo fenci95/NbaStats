@@ -6,20 +6,18 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PlayerList   {
+public class PlayerResponse {
   
   @SerializedName("data")
-  private List<PlayerListItem> data = new ArrayList<PlayerListItem>();
-  
+  private List<PlayerDetailsResponse> data = new ArrayList<PlayerDetailsResponse>();
 
-  public List<PlayerListItem> getData() {
+  public List<PlayerDetailsResponse> getData() {
     return data;
   }
-  public void setData(List<PlayerListItem> data) {
+  public void setData(List<PlayerDetailsResponse> data) {
     this.data = data;
   }
 
-  
 
   @Override
   public boolean equals(Object o) {
@@ -29,8 +27,8 @@ public class PlayerList   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PlayerList playerList = (PlayerList) o;
-    return Objects.equals(data, playerList.data);
+    PlayerResponse player = (PlayerResponse) o;
+    return Objects.equals(data, player.data);
   }
 
   @Override
@@ -41,7 +39,7 @@ public class PlayerList   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PlayerList {\n");
+    sb.append("class Player {\n");
     
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

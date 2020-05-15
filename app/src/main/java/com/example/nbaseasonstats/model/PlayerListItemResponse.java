@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 
 
-public class PlayerListItem   {
+public class PlayerListItemResponse {
   
   @SerializedName("id")
   private Long id = null;
@@ -40,7 +40,14 @@ public class PlayerListItem   {
     this.lastName = lastName;
   }
 
-  
+  public Player convertToPlayer() {
+    Player player = new Player();
+    player.id = this.id;
+    player.firstName = this.firstName;
+    player.lastName = this.lastName;
+    player.isFavourite = false;
+    return player;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -50,7 +57,7 @@ public class PlayerListItem   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PlayerListItem playerListItem = (PlayerListItem) o;
+    PlayerListItemResponse playerListItem = (PlayerListItemResponse) o;
     return Objects.equals(id, playerListItem.id) &&
         Objects.equals(firstName, playerListItem.firstName) &&
         Objects.equals(lastName, playerListItem.lastName);

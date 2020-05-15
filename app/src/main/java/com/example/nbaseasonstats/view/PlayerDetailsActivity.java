@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nbaseasonstats.NBAStatsApplication;
 import com.example.nbaseasonstats.R;
-import com.example.nbaseasonstats.model.Player;
+import com.example.nbaseasonstats.model.PlayerResponse;
 import com.example.nbaseasonstats.presenter.PlayerDetailsPresenter;
 
 import javax.inject.Inject;
@@ -39,7 +39,7 @@ public class PlayerDetailsActivity extends AppCompatActivity implements PlayerDe
     }
 
     @Override
-    public void showStats(Player playerStats) {
+    public void showStats(PlayerResponse playerStats) {
 
     }
 

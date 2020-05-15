@@ -1,17 +1,21 @@
 package com.example.nbaseasonstats.interactor.events;
 
-import com.example.nbaseasonstats.model.PlayerList;
+import com.example.nbaseasonstats.model.PlayerListItemResponse;
+import com.example.nbaseasonstats.model.PlayerListResponse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GetPlayersEvent {
     private int code;
-    private PlayerList players;
+    private List<PlayerListItemResponse> players = new ArrayList<PlayerListItemResponse>();
     private Throwable throwable;
 
     public GetPlayersEvent() {
 
     }
 
-    public GetPlayersEvent(int code, PlayerList players, Throwable throwable) {
+    public GetPlayersEvent(int code, List<PlayerListItemResponse> players, Throwable throwable) {
         this.code = code;
         this.players = players;
         this.throwable = throwable;
@@ -25,11 +29,11 @@ public class GetPlayersEvent {
         this.code = code;
     }
 
-    public PlayerList getPlayers() {
+    public List<PlayerListItemResponse> getPlayers() {
         return players;
     }
 
-    public void setPlayers(PlayerList players) {
+    public void setPlayers(List<PlayerListItemResponse> players) {
         this.players = players;
     }
 

@@ -7,8 +7,11 @@ import android.util.Log;
 
 import com.example.nbaseasonstats.NBAStatsApplication;
 import com.example.nbaseasonstats.R;
-import com.example.nbaseasonstats.model.PlayerList;
+import com.example.nbaseasonstats.model.Player;
+import com.example.nbaseasonstats.model.PlayerListResponse;
 import com.example.nbaseasonstats.presenter.PlayerListPresenter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -29,7 +32,7 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerListS
     protected void onStart() {
         super.onStart();
         this.playerListPresenter.attachScreen(this);
-        this.playerListPresenter.getPlayers();
+        this.playerListPresenter.getPlayersFromDb();
     }
 
     @Override
@@ -39,7 +42,7 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerListS
     }
 
     @Override
-    public void showPlayers(PlayerList players) {
+    public void showPlayers(List<Player> players) {
 
     }
 
