@@ -41,4 +41,8 @@ public class DatabaseInteractor {
             bus.post(event);
         }
     }
+
+    public void updatePlayerDb(Player player) {
+
+    }
 }

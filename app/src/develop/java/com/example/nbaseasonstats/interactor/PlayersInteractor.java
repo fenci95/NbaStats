@@ -28,7 +28,7 @@ public class PlayersInteractor {
     public void getPlayers() {
         GetPlayersEvent event = new GetPlayersEvent();
         try {
-            Call<PlayerListResponse> playersCall = playersAPI.playersGet();
+            Call<PlayerListResponse> playersCall = playersAPI.playersGet(120);
             Response<PlayerListResponse> response = playersCall.execute();
             if (response.code() != 200) {
                 throw new Exception("Result code is not 200");
