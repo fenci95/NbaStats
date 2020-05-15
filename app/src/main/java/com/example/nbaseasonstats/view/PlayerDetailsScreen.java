@@ -1,5 +1,8 @@
 package com.example.nbaseasonstats.view;
 
-public interface PlayerDetailsScreen {
+import com.example.nbaseasonstats.model.PlayerResponse;
 
+public interface PlayerDetailsScreen {
+    void showStats(PlayerResponse players);
+    void showError(Throwable throwable);
 }
