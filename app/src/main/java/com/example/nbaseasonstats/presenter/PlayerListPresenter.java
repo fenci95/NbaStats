@@ -6,6 +6,7 @@ import com.example.nbaseasonstats.interactor.PlayersInteractor;
 import com.example.nbaseasonstats.interactor.events.GetPlayersEvent;
 import com.example.nbaseasonstats.interactor.events.GetPlayersFromDbEvent;
 import com.example.nbaseasonstats.interactor.events.InsertPlayersToDbEvent;
+import com.example.nbaseasonstats.interactor.events.UpdatePlayerDbEvent;
 import com.example.nbaseasonstats.model.Player;
 import com.example.nbaseasonstats.model.PlayerListItemResponse;
 import com.example.nbaseasonstats.view.PlayerListScreen;
@@ -15,6 +16,8 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Executor;
 
@@ -65,6 +68,15 @@ public class PlayerListPresenter extends Presenter<PlayerListScreen> {
         });
     }
 
+    public void updatePlayerDb(Player player) {
+        networkExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                databaseInteractor.updatePlayerDb(player);
+            }
+        });
+    }
+
     public void insertPlayersToDb(List<Player> players) {
         networkExecutor.execute(new Runnable() {
             @Override
@@ -103,6 +115,13 @@ public class PlayerListPresenter extends Presenter<PlayerListScreen> {
                 getPlayers();
             } else {
                 if (screen != null) {
+                    List<Player> players = event.getPlayers();
+                    Collections.sort(players, new Comparator<Player>() {
+                        @Override
+                        public int compare(Player p1, Player p2) {
+                            return Boolean.compare(p2.isFavourite, p1.isFavourite);
+                        }
+                    });
                     screen.showPlayers(event.getPlayers());
                 }
             }
@@ -111,6 +130,18 @@ public class PlayerListPresenter extends Presenter<PlayerListScreen> {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(InsertPlayersToDbEvent event) {
+        if (event.getThrowable() != null) {
+            event.getThrowable().printStackTrace();
+            if (screen != null) {
+                screen.showError(event.getThrowable());
+            }
+        } else {
+            getPlayersFromDb();
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(UpdatePlayerDbEvent event) {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {

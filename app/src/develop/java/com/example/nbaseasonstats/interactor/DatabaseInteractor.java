@@ -3,6 +3,7 @@ package com.example.nbaseasonstats.interactor;
 import com.example.nbaseasonstats.database.NBAPlayerDao;
 import com.example.nbaseasonstats.interactor.events.GetPlayersFromDbEvent;
 import com.example.nbaseasonstats.interactor.events.InsertPlayersToDbEvent;
+import com.example.nbaseasonstats.interactor.events.UpdatePlayerDbEvent;
 import com.example.nbaseasonstats.model.Player;
 
 import org.greenrobot.eventbus.EventBus;
@@ -38,6 +39,18 @@ public class DatabaseInteractor {
         InsertPlayersToDbEvent event = new InsertPlayersToDbEvent();
         try {
             dao.insertAll(players);
+            event.setDone(true);
+            bus.post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            bus.post(event);
+        }
+    }
+
+    public void updatePlayerDb(Player player) {
+        UpdatePlayerDbEvent event = new UpdatePlayerDbEvent();
+        try {
+            dao.update(player);
             event.setDone(true);
             bus.post(event);
         } catch (Exception e) {

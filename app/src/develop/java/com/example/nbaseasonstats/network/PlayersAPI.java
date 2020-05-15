@@ -10,7 +10,9 @@ import retrofit2.Call;
 public interface PlayersAPI {
 
     @GET("players")
-    Call<PlayerListResponse> playersGet();
+    Call<PlayerListResponse> playersGet(
+            @Query("page") Integer page
+    );
 
     @GET("season_averages")
     Call<PlayerResponse> seasonAveragesGet(
