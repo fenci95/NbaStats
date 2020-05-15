@@ -3,6 +3,7 @@ package com.example.nbaseasonstats.view;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -109,6 +110,7 @@ public class PlayerDetailsActivity extends AppCompatActivity implements PlayerDe
 
     @Override
     public void showError(Throwable throwable) {
-        Log.d("Error", throwable.getMessage());
+        Toast.makeText(this,throwable.getMessage(),
+                Toast.LENGTH_SHORT).show();
     }
 }

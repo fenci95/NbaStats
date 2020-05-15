@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.nbaseasonstats.NBAStatsApplication;
 import com.example.nbaseasonstats.R;
@@ -63,7 +64,8 @@ public class PlayerListActivity extends AppCompatActivity implements PlayerListS
 
     @Override
     public void showError(Throwable throwable) {
-        Log.d("Error", throwable.getMessage());
+        Toast.makeText(this,throwable.getMessage(),
+                Toast.LENGTH_SHORT).show();
     }
 
     @Override
