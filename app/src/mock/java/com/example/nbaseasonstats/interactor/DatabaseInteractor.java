@@ -22,8 +22,15 @@ public class DatabaseInteractor {
 
     public void getPlayersFromDb() {
         GetPlayersFromDbEvent event = new GetPlayersFromDbEvent();
+        List<Player> players = new ArrayList<>();
+        Player player = new Player();
+        player.id = 1l;
+        player.isFavourite = false;
+        player.lastName = "Test";
+        player.firstName = "Elek";
+        players.add(player);
         try {
-            // event.setPlayers();
+            event.setPlayers(players);
             bus.post(event);
         } catch (Exception e) {
             event.setThrowable(e);

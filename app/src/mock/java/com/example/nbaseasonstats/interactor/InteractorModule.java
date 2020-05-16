@@ -1,5 +1,6 @@
 package com.example.nbaseasonstats.interactor;
 
+
 import org.greenrobot.eventbus.EventBus;
 
 import dagger.Module;
